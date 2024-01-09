@@ -6,6 +6,6 @@ WORKDIR /app
 COPY package*.json ./
 
 COPY . .
-RUN npm install --prefer-offline --ignore-scripts
+RUN npm ci --prefer-offline --ignore-scripts
 
 CMD ["npm", "run", "start:prod"]
