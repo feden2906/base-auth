@@ -6,7 +6,7 @@ export class CryptoHelper {
     salt: string;
   } {
     const salt = this.getSalt();
-    const buffer = pbkdf2Sync(password, salt, 1000, 64, `sha256`);
+    const buffer = pbkdf2Sync(password, salt, 1000, 64, `sha512`);
     const hash = buffer.toString('hex');
     return { hash, salt };
   }
@@ -16,7 +16,7 @@ export class CryptoHelper {
     hashString: string,
     salt: string,
   ): Promise<boolean> {
-    const buffer = pbkdf2Sync(password, salt, 1000, 64, `sha256`);
+    const buffer = pbkdf2Sync(password, salt, 1000, 64, `sha512`);
 
     const hash = buffer.toString('hex');
     const a = Buffer.from(hashString);
